@@ -6,7 +6,7 @@ const { Chess } = require('chess.js');
 const app = express();
 const server = http.createServer(app);
 const io = socket(server);
-
+require('dotenv').config();
 const chess = new Chess();
 
 let players = {};
@@ -76,6 +76,6 @@ io.on("connection", (uniqueSocket) => {
     });
 });
 
-server.listen(3000, () => {
+server.listen(process.env.PORT, () => {
     console.log('Listening on *:3000');
 });
